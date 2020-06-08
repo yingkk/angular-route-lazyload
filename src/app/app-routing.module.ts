@@ -6,15 +6,16 @@ const routes: Routes = [
   // 路由实现模块懒加载
   {
     path: 'user',
-    loadChildren: './modules/user/user.module#UserModule'
+    // loadChildren: './modules/user/user.module#UserModule'
+    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
   },
   {
     path: 'goods',
-    loadChildren: './modules/goods/goods.module#GoodsModule'
+    loadChildren: () => import('./modules/goods/goods.module').then(m => m.GoodsModule)
   },
   {
     path: 'article',
-    loadChildren: './modules/article/article.module#ArticleModule'
+    loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule)
   },
   {
     path: '**',
